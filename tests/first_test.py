@@ -1,7 +1,8 @@
 import pytest
+import softest
 
 
-class TestFirst:
+class TestFirst(softest.TestCase):
 
     @pytest.fixture(scope='class', autouse=True)
     def setup_class(self):
@@ -17,15 +18,21 @@ class TestFirst:
 
     def test1(self):
         print('Test №1')
+        assert 2 + 2 == 4
 
     def test2(self):
         print('Test №2')
+        assert 2 + 2 == 5
 
     def test3(self):
         print('Test №3')
+        self.soft_assert(self.assertEqual, 2 + 2, 4)
+        self.soft_assert(self.assertEqual, 2 + 2, 5, 'Ошибка при сложении')
+        self.assert_all()
 
     def test4(self):
         print('Test №4')
+        assert 1 / 0 == 1
 
     def test5(self):
         print('Test №5')
