@@ -1,6 +1,8 @@
 import pytest
 import softest
 
+from settings import Settings
+
 
 class TestFirst(softest.TestCase):
 
@@ -36,3 +38,4 @@ class TestFirst(softest.TestCase):
 
     def test5(self):
         print('Test №5')
+        Settings()

@@ -5,8 +5,8 @@ from pages.user_card_page import UserCardPage
 
 
 class MainPage(BasePage):
-    LOCATOR_AVATAR_BUTTON = (By.CSS_SELECTOR, '.m-topbar__user-profile')
+    AVATAR_BUTTON = (By.CSS_SELECTOR, '.m-topbar__user-profile')
 
     def click_profile_button(self) -> UserCardPage:
-        self.find_element(self.LOCATOR_AVATAR_BUTTON).click()
+        self.find_element(self.AVATAR_BUTTON).click()
         return UserCardPage(self.driver)
