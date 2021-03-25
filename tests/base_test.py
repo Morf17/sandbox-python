@@ -1,3 +1,4 @@
+import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -20,6 +21,7 @@ class BaseTest:
         yield driver
         driver.quit()
 
+    @allure.step("Авторизоваться на сайте")
     @pytest.fixture(scope='function')
     def auth(self, init_web_driver):
         driver = init_web_driver

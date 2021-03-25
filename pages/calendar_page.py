@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
@@ -18,13 +19,16 @@ class CalendarPage(BasePage):
         self.__employee_search_field = lambda: self.find_element((By.CSS_SELECTOR, '.select2-dropdown '
                                                                                    '.select2-search__field'))
 
+    @allure.step('Дождаться загрузки страницы')
     def wait_for_page_load(self):
         self.wait_for(lambda driver: self.__loader().get_attribute('style') == 'display: none;')
         return self
 
+    @allure.step('Получить выбранный месяц и год')
     def get_month_title_text(self) -> str:
         return self.__month_title().text
 
+    @allure.step('Выбрать сотрудника: {full_name}')
     def select_employee(self, full_name: str):
         self.__employee_selector().click()
         self.__employee_search_field().send_keys(full_name)
@@ -33,12 +37,15 @@ class CalendarPage(BasePage):
         self.__apply_button().click()
         return self
 
-    def get_working_days_amount(self) -> int:
-        return len(self.__working_days())
+    @allure.step('Получить наличие рабочих дней')
+    def have_working_days(self) -> bool:
+        return len(self.__working_days()) > 0
 
-    def get_weekends_amount(self) -> int:
-        return len(self.__weekends())
+    @allure.step('Получить наличие выходных дней')
+    def have_weekends(self) -> bool:
+        return len(self.__weekends()) > 0
 
+    @allure.step('Выбрать следующий месяц')
     def select_next_month(self):
         self.__date_selector().click()
         self.__next_month().click()

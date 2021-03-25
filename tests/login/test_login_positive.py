@@ -1,3 +1,5 @@
+import allure
+
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from settings import Settings
@@ -6,6 +8,7 @@ from tests.base_test import BaseTest
 
 class TestLoginPositive(BaseTest):
 
+    @allure.description('Авторизация с правильным логином и паролем')
     def test_correct_username_and_password(self, init_web_driver):
         self.driver = init_web_driver
         login_page = LoginPage(self.driver)

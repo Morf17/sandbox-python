@@ -1,9 +1,12 @@
+import allure
+
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
 
 
 class TestsLoginNegative(BaseTest):
 
+    @allure.description('Проверка авторизации с неправильным логином и паролем')
     def test_incorrect_username_and_password(self, init_web_driver):
         self.driver = init_web_driver
         login_page = LoginPage(self.driver)
@@ -16,6 +19,7 @@ class TestsLoginNegative(BaseTest):
         assert login_page.get_login_field_text() == login
         assert login_page.get_password_field_text() == ''
 
+    @allure.description('Проверка авторизации с пустым логином и паролем')
     def test_empty_username_and_password(self, init_web_driver):
         self.driver = init_web_driver
         login_page = LoginPage(self.driver)
