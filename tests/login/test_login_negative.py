@@ -1,10 +1,9 @@
 import allure
 
 from pages.login_page import LoginPage
-from tests.base_test import BaseTest
 
 
-class TestsLoginNegative(BaseTest):
+class TestsLoginNegative:
 
     @allure.description('Проверка авторизации с неправильным логином и паролем')
     def test_incorrect_username_and_password(self, init_web_driver):

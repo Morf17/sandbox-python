@@ -28,6 +28,7 @@ class Settings(metaclass=SettingsMeta):
             self.__url = self.conf.get('data', 'url')
         self.__login = self.conf.get('data', 'login')
         self.__password = self.conf.get('data', 'password')
+        self.__use_api_auth = self.conf.getboolean('data', 'use_api_auth')
         self.__driver_path = self.conf.get('data', 'driver_path')
 
     def get_url(self) -> str:
@@ -41,3 +42,6 @@ class Settings(metaclass=SettingsMeta):
 
     def get_driver_path(self) -> str:
         return self.__driver_path
+
+    def get_use_api_auth(self) -> bool:
+        return self.__use_api_auth

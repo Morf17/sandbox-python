@@ -4,10 +4,9 @@ import pytest
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from settings import Settings
-from tests.base_test import BaseTest
 
 
-class TestLoginPositive(BaseTest):
+class TestLoginPositive:
 
     @pytest.mark.parametrize('login,password', [(Settings().get_login(), Settings().get_password()), ('Тест', 'Тест')])
     @allure.description('Авторизация с правильным логином и паролем')
